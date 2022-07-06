@@ -75,11 +75,12 @@ function App() {
 
   useEffect(() => {
     function onScroll() {
+      let navBar = document.getElementById("navbar")
       if (!checkIsMobile()) {
-        return
+        navBar.style.top = "0";
+        return 
       }
       let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
-      let navBar = document.getElementById("navbar")
       if (currentPosition > scrollTop) {
         navBar.style.top = "-100px";
       } else {
