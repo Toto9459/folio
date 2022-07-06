@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from "react";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {ReactComponent as DribbleIcon} from '../icons/dribbble.svg';
@@ -28,7 +29,6 @@ const NavbarContainer = styled.section`
     width: 100%;
     max-width: 100%;
   }
-
   @media (max-width: 450px) {
     height: 80px;
   }
@@ -278,11 +278,10 @@ const Navbar = ({openMenu, setOpenMenu, lightMode, openContact, setOpenContact, 
     setOpenContact(false)
   }
 
-  const navBar = document.getElementById("navbar")
-
+  
 
   return (
-    <NavbarContainer id="navbar" isLight={lightMode}>
+    <NavbarContainer id='navbar' isLight={lightMode}>
       <NavBarWrap>
 
         <NavBarFlex1>

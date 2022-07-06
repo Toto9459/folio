@@ -57,7 +57,6 @@ const GlobalStyle = createGlobalStyle`
 
 
 
-
 function App() {
 
   const [openMenu, setOpenMenu] = useState(false)
@@ -65,30 +64,34 @@ function App() {
   const [openContact, setOpenContact] = useState(false)
   const [openHome, setOpenHome] = useState(true)
 
-  useEffect = () => {
 
-    const navBar = document.getElementById("navbar")
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = () => {
-    var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        navBar.style.top = 0;
+  const [scrollTop, setScrollTop] = useState(0);
+
+  useEffect(() => {
+    function onScroll() {
+      let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
+      let navBar = document.getElementById("navbar")
+      if (currentPosition > scrollTop) {
+        navBar.style.top = "-100px";
       } else {
-        navBar.style.top = -50 + "px";
+        navBar.style.top = "0";
       }
-      prevScrollpos = currentScrollPos;
+      setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
     }
 
-  }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollTop]);
 
-  
+
+
 
   return (
     <div className="App" style={{display: "flex",justifyContent: "flex-end"}}>
       <GlobalStyle isLight={lightMode} />
       <Menu setOpenMenu={setOpenMenu} openMenu={openMenu} setOpenHome={setOpenHome} openHome={openHome}/>
       <BrowserRouter>
-        <Navbar  
+        <Navbar
           setOpenMenu={setOpenMenu} 
           openMenu={openMenu} 
           setlightMode={setlightMode} 
