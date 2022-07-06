@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from "react";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {ReactComponent as DribbleIcon} from '../icons/dribbble.svg';
@@ -112,7 +113,7 @@ const Bar = styled.div`
   }
   &.bar2 {
     bottom: 0;
-    transform:${props => props.isActive === true ?  'translate3d(0, -22px, 0) rotate(225deg)' : 'translateY(-10px)' };
+    transform:${props => props.isActive === true ?  'translate3d(0, -7px, 0) rotate(225deg)' : 'translateY(-10px)' };
   }
 
   @media (max-width: 280px) {
@@ -126,21 +127,38 @@ const BurgerContainer = styled.button`
   background: none;
   border: none;
   margin-bottom: max(6rem, 20px);
+
+  ${props => console.log('isActive', props.isActive)}
+
+
+  &:hover > .bar1{
+      transform: ${props => props.isActive === true ?    'translate3d(0, 16px, 0) rotate(45deg)' : 'translate3d(0, 10px, 0) rotate(-180deg)' };
+  }
+  &:hover > .bar2{
+    transform: ${props => props.isActive === true ?    'translate3d(0, -4px, 0) rotate(495deg)' : 'translateY(-10px) rotate(-180deg)' };
+  } 
+
   
-    /* &:hover > .bar1{
+
+  /* Si HOVER un Burger ACTIVE
+
+    &:hover > .bar1{
         transform: translate3d(0, 15px, 0) rotate(45deg);
     }
     &:hover > .bar2{
         transform: translate3d(0, -22px, 0) rotate(495deg);
-    }  */
+    } 
+    
+    Si HOVER un Burger NO ACTIVE
 
-  /* &:hover > .bar1{
+    &:hover > .bar1{
       transform: translate3d(0, 10px, 0) rotate(-180deg);
-  }
-  &:hover > .bar2{
+    }
+    &:hover > .bar2{
       transform: translateY(-10px) rotate(-180deg);
-  } */
+    } 
 
+  */ 
 
   @media (max-width: 850px) {
     width: 55px;
@@ -263,6 +281,7 @@ const Navbar = ({openMenu, setOpenMenu, lightMode, openContact, setOpenContact, 
 
   const ClickMenu = () => {
     setOpenMenu(!openMenu)
+    // setCheckActive(!checkActive)
   }
 
   const ClickContact = () => {
@@ -277,7 +296,11 @@ const Navbar = ({openMenu, setOpenMenu, lightMode, openContact, setOpenContact, 
     setOpenContact(false)
   }
 
-  
+  // const [checkActive, setCheckActive] = useState(true)
+
+  // console.log(checkActive, "active");
+  console.log(openMenu);
+
 
   return (
     <NavbarContainer id='navbar' isLight={lightMode}>
@@ -287,7 +310,7 @@ const Navbar = ({openMenu, setOpenMenu, lightMode, openContact, setOpenContact, 
 
           <MenuBtnContainer>
 
-            <BurgerContainer onClick={ClickMenu} >
+            <BurgerContainer onClick={ClickMenu}  isActive={openMenu}>
               <Bar isLight={lightMode} className='bar1' isActive={openMenu}/>
               <Bar isLight={lightMode} className='bar2'isActive={openMenu}/>
             </BurgerContainer>
