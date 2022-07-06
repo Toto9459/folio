@@ -75,9 +75,7 @@ function App() {
 
   useEffect(() => {
     function onScroll() {
-      console.log(checkIsMobile());
       if (!checkIsMobile()) {
-        console.log('Not mobile');
         return
       }
       let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
