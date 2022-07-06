@@ -1,11 +1,10 @@
 import React from 'react'
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 import AbThumbnail from '../../assets/img/ab-distribution.webp'
 import MutezaThumbnail from '../../assets/img/muteza.webp'
 import OukhtyThumbnail from '../../assets/img/oukhty.webp'
 import FolioThumbnail from '../../assets/img/folio.webp'
 import FlowerThumbnail from '../../assets/img/flower.webp'
-import Share from "../../icons/Share.svg";
 
 import {secondColor, thirdColor, morgenWalsh, fourthColor, EmSpace, OldchildContent, secondLightColor, Title, Number, ContainerTitle, fourthLightColor, thirdLightColor} from '../Common';
 

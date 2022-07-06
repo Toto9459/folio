@@ -18,6 +18,9 @@ const MenuContainer = styled.section`
     width: 100%;
     margin-top: 100px;
   }
+  @media (max-width: 450px){
+    margin-top: 80px;
+  }
 `
 
 const Content = styled.div`

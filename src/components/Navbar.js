@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from "react";
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {ReactComponent as DribbleIcon} from '../icons/dribbble.svg';
@@ -18,6 +17,7 @@ const NavbarContainer = styled.section`
   border-right: 2px solid ${props => props.isLight === true ? thirdLightColor : thirdColor};
   background-color: ${props => props.isLight === true ? primaryLightColor : primaryColor};
   transition: all .3s ease-in;
+  transition: top 0.3s;
   @media (min-width: 1400px) {
     min-width: 150px;
   }
@@ -27,6 +27,10 @@ const NavbarContainer = styled.section`
     border-right: none;
     width: 100%;
     max-width: 100%;
+  }
+
+  @media (max-width: 450px) {
+    height: 80px;
   }
 `
 
@@ -274,8 +278,11 @@ const Navbar = ({openMenu, setOpenMenu, lightMode, openContact, setOpenContact, 
     setOpenContact(false)
   }
 
+  const navBar = document.getElementById("navbar")
+
+
   return (
-    <NavbarContainer isLight={lightMode}>
+    <NavbarContainer id="navbar" isLight={lightMode}>
       <NavBarWrap>
 
         <NavBarFlex1>

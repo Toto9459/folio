@@ -1,7 +1,7 @@
 import './font.css';
 import './reset.css';
 import { createGlobalStyle } from 'styled-components';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from './components/Navbar';
 import Menu from './components/Menu'
 import HomePage from './components/Homepage';
@@ -65,12 +65,30 @@ function App() {
   const [openContact, setOpenContact] = useState(false)
   const [openHome, setOpenHome] = useState(true)
 
+  useEffect = () => {
+
+    const navBar = document.getElementById("navbar")
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = () => {
+    var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        navBar.style.top = 0;
+      } else {
+        navBar.style.top = -50 + "px";
+      }
+      prevScrollpos = currentScrollPos;
+    }
+
+  }
+
+  
+
   return (
     <div className="App" style={{display: "flex",justifyContent: "flex-end"}}>
       <GlobalStyle isLight={lightMode} />
       <Menu setOpenMenu={setOpenMenu} openMenu={openMenu} setOpenHome={setOpenHome} openHome={openHome}/>
       <BrowserRouter>
-        <Navbar 
+        <Navbar  
           setOpenMenu={setOpenMenu} 
           openMenu={openMenu} 
           setlightMode={setlightMode} 
