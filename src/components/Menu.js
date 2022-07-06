@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import {primaryColor, secondColor, thirdColor, morgenWalsh, primaryLightColor, Number, EmSpace, OldchildContent, Title, ContainerTitle, ancient} from './Common';
+import {primaryColor, secondColor, morgenWalsh, primaryLightColor, Number, EmSpace, OldchildContent, Title, ContainerTitle} from './Common';
 
 const MenuContainer = styled.section`
   height: 100%;
@@ -23,7 +23,7 @@ const MenuContainer = styled.section`
   }
 `
 
-const Content = styled.div`
+/* const Content = styled.div`
   height: 100%;
   width: 70%;
   display: flex;
@@ -69,7 +69,7 @@ const Roman = styled.span`
   bottom: 1rem;
   padding-right: 5rem;
   min-width: 90px;
-`
+` */
 const Copyright = styled.p`
   height: auto;
   width: auto;

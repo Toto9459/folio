@@ -9,6 +9,7 @@ import ContactPage from './components/ContactPage';
 import Projects from './components/Projects';
 import {secondColor, primaryLightColor, primaryColor, secondLightColor, thirdLightColor, thirdColor} from './components/Common';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { logDOM } from '@testing-library/react';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -64,11 +65,21 @@ function App() {
   const [openContact, setOpenContact] = useState(false)
   const [openHome, setOpenHome] = useState(true)
 
-
+  
   const [scrollTop, setScrollTop] = useState(0);
+
+ 
+  const checkIsMobile = () => {
+    return window.matchMedia("(max-width: 850px)").matches
+  }
 
   useEffect(() => {
     function onScroll() {
+      console.log(checkIsMobile());
+      if (!checkIsMobile()) {
+        console.log('Not mobile');
+        return
+      }
       let currentPosition = window.pageYOffset; // or use document.documentElement.scrollTop;
       let navBar = document.getElementById("navbar")
       if (currentPosition > scrollTop) {
